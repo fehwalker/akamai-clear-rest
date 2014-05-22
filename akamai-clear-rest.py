@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 if args.cpcode is not None:
     postdata = json.dumps({'type': 'cpcode', 'objects': [args.cpcode]})
-    print (postdata)
 else:
     postdata = json.dumps({'objects': [args.object]})
-    print (postdata)
+
+
