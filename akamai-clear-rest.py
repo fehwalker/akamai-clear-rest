@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-import sys
-import urllib
 import json
 import argparse
 import requests
@@ -25,12 +23,12 @@ else:
 
 r = requests.post(ccu_endpoint, data=postdata, headers=headers, auth=(args.user, args.passwd))
 if r.encoding is not None:
-    print ("Error, unexpected data received:\n ",r.text)
+    print "Error, unexpected data received:\n ",r.text
     exit(1)
 else:
     resp = json.loads(r.text)
     if resp['httpStatus'] < 200 or resp['httpStatus'] > 299:
-        print ("Error, request not submitted\n\thttpStatus: ", resp['httpStatus'], "\n\ttitle: ", resp['title'], "\n\tdetail: ", resp['detail'], "\n\tdescribedBy: ", resp['describedBy'])
+        print "Error, request not submitted\n\thttpStatus: ", resp['httpStatus'], "\n\ttitle: ", resp['title'], "\n\tdetail: ", resp['detail'], "\n\tdescribedBy: ", resp['describedBy']
         exit(1)
     else:
-        print ("Request submitted OK\n\tEstimated time to clear: ", resp['estimatedSeconds']/60, "minutes\n\tCheck URL: ", ccu_base+resp['progressUri'])
+        print "Request submitted OK\n\tEstimated time to clear: ", resp['estimatedSeconds']/60, "minutes\n\tCheck URL: ", ccu_base+resp['progressUri']
