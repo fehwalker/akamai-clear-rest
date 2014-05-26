@@ -13,3 +13,5 @@ Just a Python3 script to clear Akamai cache via their new REST API.
       --object OBJECT  Object to clear (can specify multiple times)
       --user USER      Akamai user
       --passwd PASSWD  Akamai password
+
+Uses the lovely [Requests](http://docs.python-requests.org/en/latest/) module.
