@@ -1,7 +1,7 @@
 akamai-clear-rest
 =================
 
-Just a Python3 script to clear Akamai cache via their new REST API.
+Just a Python script to clear Akamai cache via their new REST API.
 
     $ ./akamai-clear-rest.py --help
     usage: akamai-clear-rest.py [-h] (--cpcode CPCODE | --object OBJECT) --user
