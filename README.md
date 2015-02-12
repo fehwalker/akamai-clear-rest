@@ -16,4 +16,4 @@ Just a Python script to clear Akamai cache via their new REST API.
 
 Uses the lovely [Requests](http://docs.python-requests.org/en/latest/) module.
 
-Recommend you set PYTHONUNBUFFERED=[whatever] environmnt variable if you want to see output immediately (for example if running in an automated build system).
+Recommend you set PYTHONUNBUFFERED=[whatever] environment variable if you want to see output immediately (for example if running in an automated build system).
