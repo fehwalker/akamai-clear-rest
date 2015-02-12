@@ -3,6 +3,7 @@
 import json
 import argparse
 import requests
+import time
 
 ccu_base = "https://api.ccu.akamai.com"
 ccu_endpoint = ccu_base+"/ccu/v2/queues/default"
@@ -32,3 +33,20 @@ else:
         exit(1)
     else:
         print "Request submitted OK\n\tEstimated time to clear: ", resp['estimatedSeconds']/60, "minutes\n\tCheck URL: ", ccu_base+resp['progressUri']
+
+	status_uri = ccu_base + resp['progressUri']
+	duration = resp['estimatedSeconds'] * 1.5
+	end_time = time.time() + duration
+	print "\t++ Sleeping 60 seconds..."
+	time.sleep(60)
+	while end_time > time.time():
+		r = requests.get(status_uri, headers=headers, auth=(args.user, args.passwd))
+		resp_status = json.loads(r.text)
+		if resp_status['purgeStatus'] == 'Done':
+			print "Purge complete!"
+			exit(0)
+		else:
+			print "\t++ purge still running, sleeping 60 seconds..."
+			time.sleep(60)
+	print "Clear did not complete within ", duration/60, " minutes!"
+	exit(1)
