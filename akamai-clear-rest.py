@@ -32,3 +32,15 @@ else:
         exit(1)
     else:
         print "Request submitted OK\n\tEstimated time to clear: ", resp['estimatedSeconds']/60, "minutes\n\tCheck URL: ", ccu_base+resp['progressUri']
+
+	status_uri = ccu_base + resp['progressUri']
+	end_time = time.time() + (resp['estimatatedSeconds'] * 2)
+	while end_time > time.time():
+		r = requests.get(status_uri, headers=headers, auth=(args.user, args.passwd))
+		resp_status = json.loads(r.text)
+		if resp_status['purgeStatus'] == 'Done':
+			print "Purge complete!"
+			exit(0)
+		else:
+			print "++ purge still running..."
+			time.sleep(30)
