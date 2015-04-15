@@ -36,8 +36,8 @@ else:
         print "Request submitted OK\n\tEstimated time to clear: ", resp['estimatedSeconds']/60, "minutes\n\tCheck URL: ", ccu_base+resp['progressUri']
 
 	status_uri = ccu_base + resp['progressUri']
-	if args.timepad > 0:
-		duration = resp['estimatedSeconds'] * args.timepad
+	if args.timemult > 0:
+		duration = resp['estimatedSeconds'] * args.timemult
         else:
 		duration = resp['estimatedSeconds'] * 1.5
 	end_time = time.time() + duration
