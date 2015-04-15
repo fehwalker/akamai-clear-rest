@@ -15,7 +15,7 @@ group.add_argument("--cpcode", help="CP code to clear")
 group.add_argument("--object", help="Object to clear (can specify multiple times)", action='append')
 parser.add_argument("--user", help="Akamai user", required=True)
 parser.add_argument("--passwd", help="Akamai password", required=True)
-parser.add_argument("--timepad", help="Minutes to add to Akamai estimated clear time", required=False)
+parser.add_argument("--timemult", help="Muliplier for Akamai estimated clear time (optional, default 1.5)", required=False)
 args = parser.parse_args()
 
 if args.cpcode is not None:
@@ -37,7 +37,7 @@ else:
 
 	status_uri = ccu_base + resp['progressUri']
 	if args.timepad > 0:
-		duration = resp['estimatedSeconds'] + (args.timepad * 60)
+		duration = resp['estimatedSeconds'] * args.timepad
         else:
 		duration = resp['estimatedSeconds'] * 1.5
 	end_time = time.time() + duration

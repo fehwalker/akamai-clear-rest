@@ -12,7 +12,7 @@ Just a Python script to clear Akamai cache via their new REST API.
       --object OBJECT  Object to clear (can specify multiple times)
       --user USER      Akamai user
       --passwd PASSWD  Akamai password
-      --timepad MIN    Minutes to add to Akamai estimated clear time (optional, default is multiply estimated time by 1.5)
+      --timepad MIN    Multiplier for Akamai estimated clear time (optional, default is 1.5 so a 6 minute estimate waits 9 minutes)
 
 Uses the lovely [Requests](http://docs.python-requests.org/en/latest/) module.
 
