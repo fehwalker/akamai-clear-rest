@@ -4,8 +4,7 @@ akamai-clear-rest
 Just a Python script to clear Akamai cache via their new REST API.
 
     $ ./akamai-clear-rest.py --help
-    usage: akamai-clear-rest.py [-h] (--cpcode CPCODE | --object OBJECT) --user
-                                USER --passwd PASSWD
+    usage: akamai-clear-rest.py [-h] (--cpcode CPCODE | --object OBJECT) --user USER --passwd PASSWD --timepad MIN
     
     optional arguments:
       -h, --help       show this help message and exit
@@ -13,6 +12,7 @@ Just a Python script to clear Akamai cache via their new REST API.
       --object OBJECT  Object to clear (can specify multiple times)
       --user USER      Akamai user
       --passwd PASSWD  Akamai password
+      --timepad MIN    Minutes to add to Akamai estimated clear time (optional, default is multiply estimated time by 1.5)
 
 Uses the lovely [Requests](http://docs.python-requests.org/en/latest/) module.
 
