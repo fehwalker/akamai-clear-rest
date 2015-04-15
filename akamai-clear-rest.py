@@ -15,7 +15,7 @@ group.add_argument("--cpcode", help="CP code to clear")
 group.add_argument("--object", help="Object to clear (can specify multiple times)", action='append')
 parser.add_argument("--user", help="Akamai user", required=True)
 parser.add_argument("--passwd", help="Akamai password", required=True)
-parser.add_argument("--timemult", help="Muliplier for Akamai estimated clear time (optional, default 1.5)", required=False)
+parser.add_argument("--timemult", type=int, help="Muliplier for Akamai estimated clear time (optional, default 1.5)", required=False)
 args = parser.parse_args()
 
 if args.cpcode is not None:
